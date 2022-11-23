@@ -1,0 +1,1679 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="WEB API">
+    <meta name="author" content="FERDIZ-afk">
+    <title>ONI-CHAN REST API</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.8/font-awesome-animation.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://avatars.githubusercontent.com/u/69185890?s=1000000&amp;v=4">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://avatars.githubusercontent.com/u/69185890?s=1000000&amp;v=4">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://avatars.githubusercontent.com/u/69185890?s=1000000&amp;v=4">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="canonical" href="https://demo-basic.adminkit.io/">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&amp;display=swap" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="https://ferdiz-afk.github.io/deskapp/vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="https://ferdiz-afk.github.io/deskapp/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="https://ferdiz-afk.github.io/deskapp/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://ferdiz-afk.github.io/deskapp/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://ferdiz-afk.github.io/deskapp/vendors/styles/style.css">
+    <meta name="google-site-verification" content="QGJJJf15_CuHsQbpeJMbPGNkMAL4h4mnLsba7oz6IJs">
+    <meta property="og:title" content="REST API FERDIZ-AFK">
+    <meta property="og:description" content="INI WEB REST API">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/69185890?s=1000000&amp;v=4">
+    
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+          window.dataLayer = window.dataLayer || [];
+    
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'UA-119386393-1');
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script><style type="text/css">.apexcharts-canvas {
+      position: relative;
+      user-select: none;
+      /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
+    }
+    
+    /* scrollbar is not visible by default for legend, hence forcing the visibility */
+    .apexcharts-canvas ::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 6px;
+    }
+    .apexcharts-canvas ::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(0,0,0,.5);
+      box-shadow: 0 0 1px rgba(255,255,255,.5);
+      -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
+    .apexcharts-canvas.apexcharts-theme-dark {
+      background: #343F57;
+    }
+    
+    .apexcharts-inner {
+      position: relative;
+    }
+    
+    .apexcharts-text tspan {
+      font-family: inherit;
+    }
+    
+    .legend-mouseover-inactive {
+      transition: 0.15s ease all;
+      opacity: 0.20;
+    }
+    
+    .apexcharts-series-collapsed {
+      opacity: 0;
+    }
+    
+    .apexcharts-gridline, .apexcharts-annotation-rect {
+      pointer-events: none;
+    }
+    
+    .apexcharts-tooltip {
+      border-radius: 5px;
+      box-shadow: 2px 2px 6px -4px #999;
+      cursor: default;
+      font-size: 14px;
+      left: 62px;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 12;
+      transition: 0.15s ease all;
+    }
+    .apexcharts-tooltip.apexcharts-theme-light {
+      border: 1px solid #e3e3e3;
+      background: rgba(255, 255, 255, 0.96);
+    }
+    .apexcharts-tooltip.apexcharts-theme-dark {
+      color: #fff;
+      background: rgba(30,30,30, 0.8);
+    }
+    .apexcharts-tooltip * {
+      font-family: inherit;
+    }
+    
+    .apexcharts-tooltip .apexcharts-marker,
+    .apexcharts-area-series .apexcharts-area,
+    .apexcharts-line {
+      pointer-events: none;
+    }
+    
+    .apexcharts-tooltip.apexcharts-active {
+      opacity: 1;
+      transition: 0.15s ease all;
+    }
+    
+    .apexcharts-tooltip-title {
+      padding: 6px;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+      background: #ECEFF1;
+      border-bottom: 1px solid #ddd;
+    }
+    .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+      background: rgba(0, 0, 0, 0.7);
+      border-bottom: 1px solid #333;
+    }
+    
+    .apexcharts-tooltip-text-value,
+    .apexcharts-tooltip-text-z-value {
+      display: inline-block;
+      font-weight: 600;
+      margin-left: 5px;
+    }
+    
+    .apexcharts-tooltip-text-z-label:empty,
+    .apexcharts-tooltip-text-z-value:empty {
+      display: none;
+    }
+    
+    .apexcharts-tooltip-text-value,
+    .apexcharts-tooltip-text-z-value {
+      font-weight: 600;
+    }
+    
+    .apexcharts-tooltip-marker {
+      width: 12px;
+      height: 12px;
+      position: relative;
+      top: 0px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+    
+    .apexcharts-tooltip-series-group {
+      padding: 0 10px;
+      display: none;
+      text-align: left;
+      justify-content: left;
+      align-items: center;
+    }
+    
+    .apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+      opacity: 1;
+    }
+    .apexcharts-tooltip-series-group.apexcharts-active, .apexcharts-tooltip-series-group:last-child {
+      padding-bottom: 4px;
+    }
+    .apexcharts-tooltip-series-group-hidden {
+      opacity: 0;
+      height: 0;
+      line-height: 0;
+      padding: 0 !important;
+    }
+    .apexcharts-tooltip-y-group {
+      padding: 6px 0 5px;
+    }
+    .apexcharts-tooltip-candlestick {
+      padding: 4px 8px;
+    }
+    .apexcharts-tooltip-candlestick > div {
+      margin: 4px 0;
+    }
+    .apexcharts-tooltip-candlestick span.value {
+      font-weight: bold;
+    }
+    
+    .apexcharts-tooltip-rangebar {
+      padding: 5px 8px;
+    }
+    
+    .apexcharts-tooltip-rangebar .category {
+      font-weight: 600;
+      color: #777;
+    }
+    
+    .apexcharts-tooltip-rangebar .series-name {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .apexcharts-xaxistooltip {
+      opacity: 0;
+      padding: 9px 10px;
+      pointer-events: none;
+      color: #373d3f;
+      font-size: 13px;
+      text-align: center;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 10;
+      background: #ECEFF1;
+      border: 1px solid #90A4AE;
+      transition: 0.15s ease all;
+    }
+    
+    .apexcharts-xaxistooltip.apexcharts-theme-dark {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+    
+    .apexcharts-xaxistooltip:after, .apexcharts-xaxistooltip:before {
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    
+    .apexcharts-xaxistooltip:after {
+      border-color: rgba(236, 239, 241, 0);
+      border-width: 6px;
+      margin-left: -6px;
+    }
+    .apexcharts-xaxistooltip:before {
+      border-color: rgba(144, 164, 174, 0);
+      border-width: 7px;
+      margin-left: -7px;
+    }
+    
+    .apexcharts-xaxistooltip-bottom:after, .apexcharts-xaxistooltip-bottom:before {
+      bottom: 100%;
+    }
+    
+    .apexcharts-xaxistooltip-top:after, .apexcharts-xaxistooltip-top:before {
+      top: 100%;
+    }
+    
+    .apexcharts-xaxistooltip-bottom:after {
+      border-bottom-color: #ECEFF1;
+    }
+    .apexcharts-xaxistooltip-bottom:before {
+      border-bottom-color: #90A4AE;
+    }
+    
+    .apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {
+      border-bottom-color: rgba(0, 0, 0, 0.5);
+    }
+    .apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+      border-bottom-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .apexcharts-xaxistooltip-top:after {
+      border-top-color:#ECEFF1
+    }
+    .apexcharts-xaxistooltip-top:before {
+      border-top-color: #90A4AE;
+    }
+    .apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {
+      border-top-color:rgba(0, 0, 0, 0.5);
+    }
+    .apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+      border-top-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    
+    .apexcharts-xaxistooltip.apexcharts-active {
+      opacity: 1;
+      transition: 0.15s ease all;
+    }
+    
+    .apexcharts-yaxistooltip {
+      opacity: 0;
+      padding: 4px 10px;
+      pointer-events: none;
+      color: #373d3f;
+      font-size: 13px;
+      text-align: center;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 10;
+      background: #ECEFF1;
+      border: 1px solid #90A4AE;
+    }
+    
+    .apexcharts-yaxistooltip.apexcharts-theme-dark {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+    
+    .apexcharts-yaxistooltip:after, .apexcharts-yaxistooltip:before {
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    .apexcharts-yaxistooltip:after {
+      border-color: rgba(236, 239, 241, 0);
+      border-width: 6px;
+      margin-top: -6px;
+    }
+    .apexcharts-yaxistooltip:before {
+      border-color: rgba(144, 164, 174, 0);
+      border-width: 7px;
+      margin-top: -7px;
+    }
+    
+    .apexcharts-yaxistooltip-left:after, .apexcharts-yaxistooltip-left:before {
+      left: 100%;
+    }
+    
+    .apexcharts-yaxistooltip-right:after, .apexcharts-yaxistooltip-right:before {
+      right: 100%;
+    }
+    
+    .apexcharts-yaxistooltip-left:after {
+      border-left-color: #ECEFF1;
+    }
+    .apexcharts-yaxistooltip-left:before {
+      border-left-color: #90A4AE;
+    }
+    .apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {
+      border-left-color: rgba(0, 0, 0, 0.5);
+    }
+    .apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+      border-left-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .apexcharts-yaxistooltip-right:after {
+      border-right-color: #ECEFF1;
+    }
+    .apexcharts-yaxistooltip-right:before {
+      border-right-color: #90A4AE;
+    }
+    .apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {
+      border-right-color: rgba(0, 0, 0, 0.5);
+    }
+    .apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+      border-right-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .apexcharts-yaxistooltip.apexcharts-active {
+      opacity: 1;
+    }
+    .apexcharts-yaxistooltip-hidden {
+      display: none;
+    }
+    
+    .apexcharts-xcrosshairs, .apexcharts-ycrosshairs {
+      pointer-events: none;
+      opacity: 0;
+      transition: 0.15s ease all;
+    }
+    
+    .apexcharts-xcrosshairs.apexcharts-active, .apexcharts-ycrosshairs.apexcharts-active {
+      opacity: 1;
+      transition: 0.15s ease all;
+    }
+    
+    .apexcharts-ycrosshairs-hidden {
+      opacity: 0;
+    }
+    
+    .apexcharts-zoom-rect {
+      pointer-events: none;
+    }
+    .apexcharts-selection-rect {
+      cursor: move;
+    }
+    
+    .svg_select_points, .svg_select_points_rot {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .svg_select_points_l, .svg_select_points_r {
+      cursor: ew-resize;
+      opacity: 1;
+      visibility: visible;
+      fill: #888;
+    }
+    .apexcharts-canvas.apexcharts-zoomable .hovering-zoom {
+      cursor: crosshair
+    }
+    .apexcharts-canvas.apexcharts-zoomable .hovering-pan {
+      cursor: move
+    }
+    
+    
+    .apexcharts-zoom-icon,
+    .apexcharts-zoomin-icon,
+    .apexcharts-zoomout-icon,
+    .apexcharts-reset-icon,
+    .apexcharts-pan-icon,
+    .apexcharts-selection-icon,
+    .apexcharts-menu-icon,
+    .apexcharts-toolbar-custom-icon {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      line-height: 24px;
+      color: #6E8192;
+      text-align: center;
+    }
+    
+    
+    .apexcharts-zoom-icon svg,
+    .apexcharts-zoomin-icon svg,
+    .apexcharts-zoomout-icon svg,
+    .apexcharts-reset-icon svg,
+    .apexcharts-menu-icon svg {
+      fill: #6E8192;
+    }
+    .apexcharts-selection-icon svg {
+      fill: #444;
+      transform: scale(0.76)
+    }
+    
+    .apexcharts-theme-dark .apexcharts-zoom-icon svg,
+    .apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+    .apexcharts-theme-dark .apexcharts-zoomout-icon svg,
+    .apexcharts-theme-dark .apexcharts-reset-icon svg,
+    .apexcharts-theme-dark .apexcharts-pan-icon svg,
+    .apexcharts-theme-dark .apexcharts-selection-icon svg,
+    .apexcharts-theme-dark .apexcharts-menu-icon svg,
+    .apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg{
+      fill: #f3f4f5;
+    }
+    
+    .apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,
+    .apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+    .apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {
+      fill: #008FFB;
+    }
+    .apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+    .apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+    .apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+    .apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
+    .apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+    .apexcharts-theme-light .apexcharts-menu-icon:hover svg {
+      fill: #333;
+    }
+    
+    .apexcharts-selection-icon, .apexcharts-menu-icon {
+      position: relative;
+    }
+    .apexcharts-reset-icon {
+      margin-left: 5px;
+    }
+    .apexcharts-zoom-icon, .apexcharts-reset-icon, .apexcharts-menu-icon {
+      transform: scale(0.85);
+    }
+    
+    .apexcharts-zoomin-icon, .apexcharts-zoomout-icon {
+      transform: scale(0.7)
+    }
+    
+    .apexcharts-zoomout-icon {
+      margin-right: 3px;
+    }
+    
+    .apexcharts-pan-icon {
+      transform: scale(0.62);
+      position: relative;
+      left: 1px;
+      top: 0px;
+    }
+    .apexcharts-pan-icon svg {
+      fill: #fff;
+      stroke: #6E8192;
+      stroke-width: 2;
+    }
+    .apexcharts-pan-icon.apexcharts-selected svg {
+      stroke: #008FFB;
+    }
+    .apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+      stroke: #333;
+    }
+    
+    .apexcharts-toolbar {
+      position: absolute;
+      z-index: 11;
+      top: 0px;
+      right: 3px;
+      max-width: 176px;
+      text-align: right;
+      border-radius: 3px;
+      padding: 0px 6px 2px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .apexcharts-toolbar svg {
+      pointer-events: none;
+    }
+    
+    .apexcharts-menu {
+      background: #fff;
+      position: absolute;
+      top: 100%;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 3px;
+      right: 10px;
+      opacity: 0;
+      min-width: 110px;
+      transition: 0.15s ease all;
+      pointer-events: none;
+    }
+    
+    .apexcharts-menu.apexcharts-menu-open {
+      opacity: 1;
+      pointer-events: all;
+      transition: 0.15s ease all;
+    }
+    
+    .apexcharts-menu-item {
+      padding: 6px 7px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .apexcharts-theme-light .apexcharts-menu-item:hover {
+      background: #eee;
+    }
+    .apexcharts-theme-dark .apexcharts-menu {
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+    }
+    
+    @media screen and (min-width: 768px) {
+    
+      .apexcharts-canvas:hover .apexcharts-toolbar {
+        opacity: 1;
+      }
+    }
+    
+    .apexcharts-datalabel.apexcharts-element-hidden {
+      opacity: 0;
+    }
+    
+    .apexcharts-pie-label,
+    .apexcharts-datalabels, .apexcharts-datalabel, .apexcharts-datalabel-label, .apexcharts-datalabel-value {
+      cursor: default;
+      pointer-events: none;
+    }
+    
+    .apexcharts-pie-label-delay {
+      opacity: 0;
+      animation-name: opaque;
+      animation-duration: 0.3s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+    }
+    
+    .apexcharts-canvas .apexcharts-element-hidden {
+      opacity: 0;
+    }
+    
+    .apexcharts-hide .apexcharts-series-points {
+      opacity: 0;
+    }
+    
+    .apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+    .apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events, .apexcharts-radar-series path, .apexcharts-radar-series polygon {
+      pointer-events: none;
+    }
+    
+    /* markers */
+    
+    .apexcharts-marker {
+      transition: 0.15s ease all;
+    }
+    
+    @keyframes opaque {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    /* Resize generated styles */
+    @keyframes resizeanim {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    
+    .resize-triggers {
+      animation: 1ms resizeanim;
+      visibility: hidden;
+      opacity: 0;
+    }
+    
+    .resize-triggers, .resize-triggers > div, .contract-trigger:before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .resize-triggers > div {
+      background: #eee;
+      overflow: auto;
+    }
+    
+    .contract-trigger:before {
+      width: 200%;
+      height: 200%;
+    }
+    </style></head>
+<body class="header-white sidebar-light">
+    <div class="pre-loader" style="display: none;">
+    <div class="pre-loader-box">
+    <div class="loader-logo">
+    <img src="https://i.ibb.co/DtFgv3g/giphy.webp" alt="">
+    </div>
+    <div class="loader-progress" id="progress_div">
+    <div class="bar" id="bar1" style="width: 100%;"></div>
+    </div>
+    <div class="percent" id="percent1">100%</div>
+    <div class="loading-text"> Loading... </div>
+    </div>
+    </div>
+    <div class="header">
+    <div class="header-left">
+    <div class="menu-icon dw dw-menu"></div>
+    <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+    <div class="header-search">
+    <form>
+    <div class="form-group mb-0">
+    <i class="dw dw-search2 search-icon"></i>
+    <input type="text" class="form-control search-input" placeholder="Search Here">
+    <div class="dropdown">
+    <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+    <i class="ion-arrow-down-c"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+    <div class="form-group row">
+    <label class="col-sm-12 col-md-2 col-form-label">From</label>
+    <div class="col-sm-12 col-md-10">
+    <input class="form-control form-control-sm form-control-line" type="text">
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-12 col-md-2 col-form-label">To</label>
+    <div class="col-sm-12 col-md-10">
+    <input class="form-control form-control-sm form-control-line" type="text">
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-12 col-md-2 col-form-label">Subject</label>
+    <div class="col-sm-12 col-md-10">
+    <input class="form-control form-control-sm form-control-line" type="text">
+    </div>
+    </div>
+    <div class="text-right">
+    <button class="btn btn-primary">Search</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    <div class="header-right">
+    <div class="dashboard-setting user-notification">
+    <div class="dropdown">
+    <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+    <i class="dw dw-settings2"></i>
+    </a>
+    </div>
+    </div>
+    <div class="user-notification">
+    <div class="dropdown">
+    <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+    <i class="icon-copy dw dw-notification"></i>
+    <span class="badge notification-active"></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+    <div class="notification-list mx-h-350 customscroll mCustomScrollbar _mCS_2 mCS_no_scrollbar"><div id="mCSB_2" class="mCustomScrollBox mCS-dark-2 mCSB_vertical mCSB_inside" style="max-height: 0px;" tabindex="0"><div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+    <ul>
+    <li>
+    <a href="#">
+    <img src="https://avatars.githubusercontent.com/u/87928412?v=4" alt="" class="mCS_img_loaded">
+    <h3>M Hadi Firmansya</h3>
+    <p>semangat bang FERDIZ, ngembangin web nya</p>
+    </a>
+    </li>
+    <li>
+    <a href="#">
+    <img src="https://avatars.githubusercontent.com/u/55822959?s=1000000&amp;v=4" alt="" class="mCS_img_loaded">
+    <h3>Joy, MhankBarBar</h3>
+    <p>wah keren tuh semangat ngembanginnya</p>
+    </a>
+    </li>
+    <li>
+    <a href="#">
+    <img src="https://avatars.githubusercontent.com/u/69185890?s=1000000&amp;v=4" alt="" class="mCS_img_loaded">
+    <h3>FERDIZ-afk</h3>
+    <p>ganti template web</p>
+    </a>
+    </li>
+    </ul>
+    </div><div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-dark-2 mCSB_scrollTools_vertical mCSB_scrollTools_onDrag_expand" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+    </div>
+    </div>
+    </div>
+    <div class="user-info-dropdown">
+     <div class="dropdown">
+    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+    <span class="user-icon">
+    <img src="https://avatars.githubusercontent.com/u/69185890?s=1000000&amp;v=4" alt="">
+    </span>
+    <span class="user-name">Guest</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+    <a class="dropdown-item" href="/dashboard">
+    <i class="dw dw-home"></i> Dashboard </a>
+    <a class="dropdown-item" href="/users/login">
+    <i class="dw dw-user1"></i> Login </a>
+    <a class="dropdown-item" href="/users/register">
+    <i class="dw dw-help"></i> Register </a>
+    </div>
+    </div> </div>
+    </div>
+    </div>
+    <div class="right-sidebar">
+    <div class="sidebar-title">
+    <h3 class="weight-600 font-16 text-blue"> Layout Settings <span class="btn-block font-weight-400 font-12">User Interface Settings</span>
+    </h3>
+    <div class="close-sidebar" data-toggle="right-sidebar-close">
+    <i class="icon-copy ion-close-round"></i>
+    </div>
+    </div>
+    <div class="right-sidebar-body customscroll mCustomScrollbar _mCS_3"><div id="mCSB_3" class="mCustomScrollBox mCS-dark-2 mCSB_vertical mCSB_inside" tabindex="0" style="max-height: none;"><div id="mCSB_3_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+    <div class="right-sidebar-body-content">
+    <h4 class="weight-600 font-18 pb-10">Header Background</h4>
+    <div class="sidebar-btn-group pb-30 mb-10">
+    <a href="javascript:void(0);" class="btn btn-outline-primary header-white active">White</a>
+    <a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
+    </div>
+    <h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
+    <div class="sidebar-btn-group pb-30 mb-10">
+    <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light active">White</a>
+    <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark">Dark</a>
+    </div>
+    <h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
+    <div class="sidebar-radio-group pb-10 mb-10">
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-1" checked="">
+    <label class="custom-control-label" for="sidebaricon-1">
+    <i class="fa fa-angle-down"></i>
+    </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-2">
+    <label class="custom-control-label" for="sidebaricon-2">
+    <i class="ion-plus-round"></i>
+    </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input" value="icon-style-3">
+    <label class="custom-control-label" for="sidebaricon-3">
+    <i class="fa fa-angle-double-right"></i>
+    </label>
+    </div>
+    </div>
+    <h4 class="weight-600 font-18 pb-10">Menu List Icon</h4>
+    <div class="sidebar-radio-group pb-30 mb-10">
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input" value="icon-list-style-1" checked="">
+    <label class="custom-control-label" for="sidebariconlist-1">
+    <i class="ion-minus-round"></i>
+    </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input" value="icon-list-style-2">
+    <label class="custom-control-label" for="sidebariconlist-2">
+    <i class="fa fa-circle-o" aria-hidden="true"></i>
+    </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input" value="icon-list-style-3">
+    <label class="custom-control-label" for="sidebariconlist-3">
+    <i class="dw dw-check"></i>
+    </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input" value="icon-list-style-4" checked="">
+    <label class="custom-control-label" for="sidebariconlist-4">
+    <i class="icon-copy dw dw-next-2"></i>
+    </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input" value="icon-list-style-5">
+    <label class="custom-control-label" for="sidebariconlist-5">
+    <i class="dw dw-fast-forward-1"></i>
+    </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input" value="icon-list-style-6">
+    <label class="custom-control-label" for="sidebariconlist-6">
+    <i class="dw dw-next"></i>
+    </label>
+    </div>
+    </div>
+    <div class="reset-options pt-30 text-center">
+    <button class="btn btn-danger" id="reset-settings">Reset Settings</button>
+    </div>
+    </div>
+    </div><div id="mCSB_3_scrollbar_vertical" class="mCSB_scrollTools mCSB_3_scrollbar mCS-dark-2 mCSB_scrollTools_vertical mCSB_scrollTools_onDrag_expand" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_3_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: block; height: 499px; max-height: 545px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+    </div>
+    <div class="left-side-bar">
+    <div class="brand-logo">
+    <a href="#">
+    <img src="https://i.ibb.co/RgJyJJk/20220706-171001.png" alt="" class="dark-logo" style="width:600px;height:70px;">
+    <img src="https://i.ibb.co/RgJyJJk/20220706-171001.png" alt="" class="light-logo" style="width:600px;height:70px;">
+    </a>
+    <div class="close-sidebar" data-toggle="left-sidebar-close">
+    <i class="ion-close-round"></i>
+    </div>
+    </div>
+    <div class="menu-block customscroll mCustomScrollbar _mCS_3 _mCS_1"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+    <div class="sidebar-menu icon-style-1 icon-list-style-1">
+    <ul id="accordion-menu">
+    <li>
+    <a href="/" class="dropdown-toggle no-arrow">
+    <span class="micon bi bi-house"></span>
+    <span class="mtext">Home</span>
+    </a>
+    </li>
+    <li>
+    <a href="/profile" class="dropdown-toggle no-arrow">
+    <span class="micon bx bx-user"></span>
+    <span class="mtext">Profile</span>
+    </a>
+    </li>
+    <li>
+    <a href="/price" class="dropdown-toggle no-arrow">
+    <span class="micon bi bi-cash"></span>
+    <span class="mtext">Pricing</span>
+    </a>
+    </li>
+    <li>
+    <a href="/donation" class="dropdown-toggle no-arrow">
+    <span class="micon bi bi-coin"></span>
+    <span class="mtext">Donation</span>
+    </a>
+    </li>
+    <li>
+    <a href="https://wa.me/6283861007177?text=p" class="dropdown-toggle no-arrow">
+    <span class="micon bi bi-robot"></span>
+    <span class="mtext">Example Bot</span>
+    </a>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bi bi-globe"></span>
+    <span class="mtext">Web</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="https://github.com/FERDIZ-afk">Base Wa Bot</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bi bi-headset"></span>
+    <span class="mtext">Customer Service</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="https://wa.me/6287877173955">Cs on 24 Hours</a>
+    </li>
+    <li>
+    <a href="https://chat.whatsapp.com/GaRWLEYSSQO8Vof0uHOrGp">Cs Group on 24 Hours</a>
+    </li>
+    </ul>
+    </li>
+    <li>
+    <div class="sidebar-small-cap"> Main </div>
+    </li>
+    <li>
+    <a href="/inposerper" class="dropdown-toggle no-arrow">
+    <span class="micon fa fa-database"></span>
+    <span class="mtext">Statistic</span>
+    </a>
+    </li>
+    <li>
+    <a href="/timeline" class="dropdown-toggle no-arrow">
+    <span class="micon bi bi-diagram-3"></span><span class="mtext">timeline update</span>
+    </a>
+    </li>
+    <li>
+    <div class="sidebar-small-cap"> Features </div>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bi bi-arrow-down"></span>
+    <span class="mtext">Downloader</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/downloader/ytplay?query=cara membuat rest api&amp;apikey=">Youtube Play</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bi bi-camera-video"></span>
+    <span class="mtext">Asupan</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/asupan/random?apikey=">Random</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-image"></span>
+    <span class="mtext">Cecan</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/cecan/random?apikey=">Random</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bi bi-search"></span>
+    <span class="mtext">Search</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/search/youtube?query=cara memebuat rest api bot wa&amp;apikey=">Youtube</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-film"></span>
+    <span class="mtext">Film</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/film/search?apikey=">Search</a>
+    </li>
+    <li>
+    <a href="/api/film/play?apikey=">Play</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon fa fa-etsy"></span>
+    <span class="mtext">ephoto360</span>
+    </a>
+    <ul class="submenu">
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="mtext">testing</span>
+    </a>
+    <ul class="submenu child">
+    <li><a href="/api/textpro/pencil?text=danzz&amp;apikey=">Pencils</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon fa fa-text-width"></span>
+    <span class="mtext">Text Pro me</span>
+    </a>
+    <ul class="submenu">
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="mtext">light-style</span>
+    </a>
+    <ul class="submenu child">
+    <li><a href="/api/textprome/category/light-style?effect=gradient_neon_light&amp;text=FERDIZ-AFK&amp;apikey=">gradient_neon_light</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_light_Blackpink&amp;text=FERDIZ-AFK&amp;apikey=">neon_light_Blackpink</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=summer_neon_light_text&amp;text=FERDIZ-AFK&amp;apikey=">summer_neon_light_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=light_glow_sliced_text&amp;text=FERDIZ-AFK&amp;apikey=">light_glow_sliced_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_light_glitch_text&amp;text=FERDIZ-AFK&amp;apikey=">neon_light_glitch_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_light_on_brick_wall&amp;text=FERDIZ-AFK&amp;apikey=">neon_light_on_brick_wall</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=glowing_neon_light_text&amp;text=FERDIZ-AFK&amp;apikey=">glowing_neon_light_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=online_thunder_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">online_thunder_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=3d_neon_light_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">3d_neon_light_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=impressive_glitch_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">impressive_glitch_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_devil_wings_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">neon_devil_wings_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=a_futuristic_technology_neon_light&amp;text=FERDIZ-AFK&amp;apikey=">futuristic_technology_neon</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_light_text_galaxy_style&amp;text=FERDIZ-AFK&amp;apikey=">neon_light_text_galaxy</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=holographic_3d_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">holographic_3d_text_effect</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_text_effect_online&amp;text=FERDIZ-AFK&amp;apikey=">neon_text_effect_online</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=firework_sparkle_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">firework_sparkle_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=rainbow_equalizer_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">rainbow_equalizer_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=matrix_style_text_effect_online&amp;text=FERDIZ-AFK&amp;apikey=">matrix_style_text_effect</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_light_text_effect_online&amp;text=FERDIZ-AFK&amp;apikey=">neon_light_text_effect</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=create_thunder_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">create_thunder_text_effect</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=neon_text_effect_online2&amp;text=FERDIZ-AFK&amp;apikey=">neon_text_effect_online2</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=bokeh_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">bokeh_text_effect</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=green_neon_text_effect&amp;text=FERDIZ-AFK&amp;apikey=">green_neon_text_effect</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=free_advanced_glow_text&amp;text=FERDIZ-AFK&amp;apikey=">free_advanced_glow_text</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=glitch_text_effect_style_tik_tok&amp;text1=FERDIZ&amp;text2=AFK&amp;apikey=">glitch_text_style_tik_tok</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=realistic_vintage_style_light_bulb&amp;text1=FERDIZ&amp;text2=AFK&amp;apikey=">realistic_vintage_style</a></li>
+    <li><a href="/api/textprome/category/light-style?effect=glitch_text_effect_online&amp;text1=FERDIZ&amp;text2=AFK&amp;apikey=">glitch_text_effect</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon fa fa-camera-retro"></span>
+    <span class="mtext">photofunia</span>
+    </a>
+    <ul class="submenu">
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="mtext">testing</span>
+    </a>
+    <ul class="submenu child">
+    <li><a href="/api/textpro/pencil?text=danzz&amp;apikey=">Pencils</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-edit"></span>
+    <span class="mtext">Photo Oxy</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/photooxy/flaming?text=danzz&amp;apikey=">Flaming</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bi bi-images"></span>
+    <span class="mtext">Canvas</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/canvas/ttp?text=FERDIZ ganteng&amp;apikey=">Ttp</a>
+    </li>
+    <li>
+    <a href="/api/canvas/attp?text=FERDIZ ganteng&amp;apikey=">Attp</a>
+    </li>
+    <li>
+    <a href="/api/canvas/gura?name=FERDIZ ganteng&amp;apikey=">Gura</a>
+    </li>
+    <li>
+    <a href="/api/canvas/kaneki?name=FERDIZ ganteng&amp;apikey=">kaneki</a>
+    </li>
+    <li>
+    <a href="/api/canvas/loliGgo?name=FERDIZ&amp;apikey=">loliGgo</a>
+    </li>
+    <li>
+    <a href="/api/canvas/nekosad?text1=FERDIZ&amp;text2=ganteng&amp;apikey=">nekosad</a>
+    </li>
+    <li>
+    <a href="/api/canvas/nekogirl1?text1=FERDIZ&amp;text2=ganteng&amp;apikey=">nekogirl1</a>
+    </li>
+    <li>
+    <a href="/api/canvas/nulis?text=Cinta adalah suatu emosi dari kasih sayang yang kuat dan ketertarikan pribadi. Cinta juga dapat diartikan sebagai suatu perasaan dalam diri seseorang akibat faktor pembentuknya.&amp;apikey=">nulis lembar kanan-kiri</a>
+    </li>
+    <li>
+    <a href="/api/canvas/trigger?picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;apikey=">trigger</a>
+    </li>
+    <li>
+    <a href="/api/canvas/wasted?picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;apikey=">wasted</a>
+    </li>
+    <li>
+    <a href="/api/canvas/wanted?picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;apikey=">wanted</a>
+    </li>
+    <li>
+    <a href="/api/canvas/deltrash?picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;apikey=">deltrash</a>
+    </li>
+    <li>
+    <a href="/api/canvas/patrick?picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;apikey=">patrick</a>
+    </li>
+    <li>
+    <a href="/api/canvas/burn?picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;apikey=">burn</a>
+    </li>
+    <li>
+    <a href="/api/canvas/smeme?picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;text1=tek1&amp;text2=textdua&amp;apikey=">smeme</a>
+    </li>
+    <li>
+    <a href="/api/canvas/welcome_v1?ppurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;bgurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoyd4vOi-tJEhN-voL-yVTYsko8dcBvloa2A&amp;usqp=CAU&amp;username=FERDIZ-AFK&amp;totalmember=45&amp;secondtext=wah ada member baru &amp;apikey=">welcome_v1</a>
+    </li>
+    <li>
+    <a href="/api/canvas/promote_v1?ppurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;bgurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoyd4vOi-tJEhN-voL-yVTYsko8dcBvloa2A&amp;usqp=CAU&amp;username=FERDIZ-AFK&amp;totalmember=45&amp;secondtext=selamat atas kenaikan jabatannya &amp;apikey=">promote_v1</a>
+    </li>
+    <li>
+    <a href="/api/canvas/demote_v1?ppurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;bgurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoyd4vOi-tJEhN-voL-yVTYsko8dcBvloa2A&amp;usqp=CAU&amp;username=FERDIZ-AFK&amp;totalmember=45&amp;secondtext=kamu terlah turun jabatan &amp;apikey=">demote_v1</a>
+    </li>
+    <li>
+    <a href="/api/canvas/leave_v1?ppurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;bgurl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoyd4vOi-tJEhN-voL-yVTYsko8dcBvloa2A&amp;usqp=CAU&amp;username=FERDIZ-AFK&amp;totalmember=45&amp;secondtext=yah ada member yang keluar &amp;apikey=">leave_v1</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon fa fa-paint-brush"></span>
+    <span class="mtext">Maker</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/Fmake/nulis?nama=Ferdi zaky luthfi aridho&amp;kelas=10 tkj&amp;no=230&amp;text=Cinta adalah suatu emosi dari kasih sayang yang kuat dan ketertarikan pribadi. Cinta juga dapat diartikan sebagai suatu perasaan dalam diri seseorang akibat faktor pembentuknya.&amp;apikey=">Nulis</a>
+    </li>
+    <li>
+    <a href="/api/Fmake/ktpmaker?nik=087877173955&amp;nama=Ferdi%20zaky%20luthfi%20aridho&amp;ttl=Pacitan,02-07-2021&amp;jk=laki-laki&amp;gd=abc&amp;almt=dsn.jeruk&amp;rtw=02/02&amp;kel=gondosari&amp;kc=punung&amp;agm=Islam%20ory&amp;st=pacar%20Shouko%20Nishimiya&amp;krj=nonton%20anime%20di%20rumah&amp;ngr=Indo%20Jepang&amp;blk=ganti%20hp&amp;prv=jawa%20timur&amp;kab=Pacitan&amp;picturl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLsSI7eajxhLwkdMqO3p1WzwCxN-8P2ctSoA&amp;usqp=CAU&amp;apikey=">Ktpmaker</a>
+    </li>
+    <li>
+    <a href="/api/Fmake/estetik?picturl=https://i.ibb.co/d6cQkMq/images-removebg-preview.png&amp;apikey=">Estetik</a>
+    </li>
+    <li>
+    <a href="/api/Fmake/sertiff?text= FERDI Z-AFK&amp;text2=Garena ep ep&amp;apikey=">Sertiff</a>
+    </li>
+    <li>
+    <a href="/api/Fmake/blackpink?text=maker blackpink&amp;apikey=">Blackpink</a>
+    </li>
+    <li>
+    <a href="/api/Fmake/phlogo?text=maker&amp;text2=logo&amp;apikey=">porn-hub</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-images"></span>
+    <span class="mtext">Wallpaper</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/wallpaper/random?apikey=">Random</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-game"></span>
+    <span class="mtext">Game</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/game/asahotak?apikey=">Asah Otak</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-image"></span>
+    <span class="mtext">Sfw</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/sfw/waifu?apikey=">Waifu</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-image"></span>
+    <span class="mtext">Nsfw</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/nsfw/hentai?apikey=">Hentai</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon fa fa-smile"></span>
+    <span class="mtext">Fun</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/fun/simi?text=hai&amp;lang=id&amp;apikey=">Simi</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon fa fa-bullseye"></span>
+    <span class="mtext">Random</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/random/meme?apikey=">Meme</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-user-check"></span>
+    <span class="mtext">Stalker</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/stalker/github?username=Danzzxcodes&amp;apikey=">Github</a>
+    </li>
+    <li>
+    <a href="/api/stalker/instagram?username=ferdiz_afk&amp;apikey=">Instagram</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-link"></span>
+    <span class="mtext">Short Link</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/shortlink/tinyurl?url=https://danzz-api.herokuapp.com/&amp;apikey=">Tinyurl</a>
+    </li>
+    <li>
+    <a href="/api/shortlink/cuttly?url=https://danzz-api.herokuapp.com/&amp;apikey=">Cuttly</a>
+    </li>
+    <li>
+    <a href="/api/shortlink/bitly?url=https://danzz-api.herokuapp.com/&amp;apikey=">Bitly</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-moon"></span>
+    <span class="mtext">Islamic</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/islamic/randomimage?apikey=">Random Image</a>
+    </li>
+    <li>
+    <a href="/api/islamic/jadwalsholat?apikey=">Jadwal Sholat</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-compass"></span>
+    <span class="mtext">Trending</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/trending/bekasi?apikey=">Bekasi</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-book"></span>
+    <span class="mtext">News</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/news/inews?apikey=">INews</a>
+    </li>
+    <li>
+    <a href="/api/news/kompas?apikey=">Kompas</a>
+    </li>
+    <li>
+    <a href="/api/news/okezone?apikey=">Oke Zone</a>
+    </li>
+    <li>
+    <a href="/api/news/antara?apikey=">Antara</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-info-circle"></span>
+    <span class="mtext">Information</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/information/gempa?apikey=">Gempa</a>
+    </li>
+    <li>
+    <a href="/api/information/covidworld?apikey=">Covid World</a>
+    </li>
+    <li>
+    <a href="/api/information/postalcode?city=bogor&amp;apikey=">Postal Code</a>
+    </li>
+    <li>
+    <a href="/api/information/hoax?apikey=">Hoax</a>
+    </li>
+    <li>
+    <a href="/api/information/jadwalbola?apikey=">Jadwal Bola</a>
+    </li>
+    <li>
+    <a href="/api/information/clock?apikey=">Jam WIB</a>
+    </li>
+    <li>
+    <a href="/api/information/worldclock?apikey=">Jam Dunia</a>
+    </li>
+    <li>
+    <a href="/api/information/kbbi?query=bunga&amp;apikey=">Kbbi</a>
+    </li>
+    <li>
+    <a href="/api/information/wikipedia?query=manusia&amp;apikey=">Wikipedia</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-anchor"></span>
+    <span class="mtext">Primbon</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/primbon/ramalanjodoh?name1=FERDIZ&amp;name2=nia&amp;apikey=">Ramalan Jodoh</a>
+    </li>
+    <li>
+    <a href="/api/primbon/artinama?name=danzz&amp;apikey=">Arti Nama</a>
+    </li>
+    <li>
+    <a href="/api/primbon/tafsirmimpi?dream=basah&amp;apikey=">Tafsir Mimpi</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bi bi-tools"></span>
+    <span class="mtext">Tools</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/tools/ebase64?text=FERDIZGANTENG&amp;apikey=">Base64 Encrypt</a>
+    </li>
+    <li>
+    <a href="/api/tools/dbase64?text=FERDIZGANTENG&amp;apikey=">Base64 Decrypt</a>
+    </li>
+    <li>
+    <a href="/api/tools/ebase32?text=FERDIZGANTENG&amp;apikey=">Base32 Encrypt</a>
+    </li>
+    <li>
+    <a href="/api/tools/dbase32?text=FERDIZGANTENG&amp;apikey=">Base32 Decrypt</a>
+    </li>
+    <li>
+    <a href="/api/tools/ebinary?text=FERDIZGANTENG&amp;apikey=">Binary Encrypt</a>
+    </li>
+    <li>
+    <a href="/api/tools/dbinary?text=FERDIZGANTENG&amp;apikey=">Binary Decrypt</a>
+    </li>
+    <li>
+    <a href="/api/tools/styletext?text=FERDIZGANTENG&amp;apikey=">Style Text</a>
+    </li>
+    <li>
+    <a href="/api/tools/translate?text=Thanks&amp;lang=ms&amp;apikey=">Translate</a>
+    </li>
+    <li>
+    <a href="/api/tools/ssweb?link=https://danzz-api.herokuapp.com/&amp;apikey=">Ssweb</a>
+    </li>
+    <li>
+    <a href="/api/tools/fakeaddress?apikey=">Fake Address</a>
+    </li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-option="off">
+    <span class="micon bx bx-leaf"></span>
+    <span class="mtext">Other</span>
+    </a>
+    <ul class="submenu">
+    <li>
+    <a href="/api/other/qrcode?url=danzz&amp;apikey=">Qr Code</a>
+    </li>
+    <li>
+    <a href="/api/other/couplepp?url=danzz&amp;apikey=">Couple Pp</a>
+    </li>
+    <li>
+    <a href="/api/other/balikhuruf?text=FERDIZ&amp;apikey=">Balik Huruf</a>
+    </li>
+    <li>
+    <a href="/api/other/balikangka?text=1234&amp;apikey=">Balik Angka</a>
+    </li>
+    <li>
+    <a href="/api/other/bilangangka?text=1234&amp;apikey=">Bilang Angka</a>
+    </li>
+    <li>
+    <a href="/api/other/besarkecil?text=danzz&amp;apikey=">Besar Kecil</a>
+    </li>
+    <li>
+    <a href="/api/other/heleh?text=danzz&amp;apikey=">Heleh</a>
+    </li>
+    <li>
+    <a href="/api/other/huluh?text=danzz&amp;apikey=">Huluh</a>
+    </li>
+    <li>
+    <a href="/api/other/hilih?text=danzz&amp;apikey=">Hilih</a>
+    </li>
+    <li>
+    <a href="/api/other/halah?text=danzz&amp;apikey=">Halah</a>
+    </li>
+    <li>
+    <a href="/api/other/kapital?text=danzz&amp;apikey=">Kapital</a>
+    </li>
+    <li>
+    <a href="/api/other/katajago?text=danzz&amp;apikey=">Kata Jago</a>
+    </li>
+    <li>
+    <a href="/api/other/resepmasakan?text=danzz&amp;apikey=">Resep Masakan</a>
+    </li>
+    <li>
+    <a href="/api/other/jumblahhuruf?text=danzz&amp;apikey=">Jumblah Huruf</a>
+    </li>
+    <li>
+    <a href="/api/other/jumblahangka?text=123&amp;apikey=">Jumblah Angka</a>
+    </li>
+    <li>
+    <a href="/api/other/detailhero?hero=fanny&amp;apikey=">Detail Hero</a>
+    </li>
+    </ul>
+    </li>
+    <li>
+    <div class="dropdown-divider"></div>
+    </li>
+    <li>
+    <div class="sidebar-small-cap"> Contact </div>
+    </li>
+    <li>
+    <a href="mailto: ferdizakyla@gmail.com" class="dropdown-toggle no-arrow">
+    <span class="micon bx bx-envelope"></span>
+    <span class="mtext">Email</span>
+    </a>
+    </li>
+    <li>
+    <a href="https://github.com/FERDIZ-afk" class="dropdown-toggle no-arrow">
+    <span class="micon fab fa-github"></span>
+    <span class="mtext">Github</span>
+    </a>
+    </li>
+    <li>
+    <a href="https://instagram.com/ferdiz_afk" class="dropdown-toggle no-arrow">
+    <span class="micon fab fa-instagram"></span>
+    <span class="mtext">Instagram</span>
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: block; height: 132px; max-height: 533px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+    </div> <div class="main-container">
+    <div class="xs-pd-20-10 pd-ltr-20">
+    <div class="title pb-20">
+    <h2 class="h3 mb-0">Dashboard Overview</h2>
+    </div>
+    <div class="row pb-10">
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+    <div class="card-box height-100-p widget-style3">
+    <div class="d-flex flex-wrap">
+    <div class="widget-data">
+    <div class="weight-700 font-24 text-dark" id="browser_info">18:37:05</div>
+    <div class="font-14 text-secondary weight-500" id="browser_sholat">Magrib!</div>
+    </div>
+    <div class="widget-icon">
+    <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);">
+    <i class="icon-copy fa fa-clock faa-ring animated faa-slow" aria-hidden="true"></i>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+    <div class="card-box height-100-p widget-style3">
+    <div class="d-flex flex-wrap">
+    <div class="widget-data">
+    <div class="weight-700 font-24 text-dark">00 </div>
+    <div class="font-14 text-secondary weight-500">Visitor</div>
+    </div>
+    <div class="widget-icon">
+    <div class="icon" data-color="#00eccf" style="color: rgb(0, 236, 207);">
+    <i class="icon-copy fa fa-eye faa-flash animated faa-slow" aria-hidden="true"></i>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+    <div class="card-box height-100-p widget-style3">
+    <div class="d-flex flex-wrap">
+    <div class="widget-data">
+    <div class="weight-700 font-24 text-dark">2 </div>
+    <div class="font-14 text-secondary weight-500">User TEST Register</div>
+    </div>
+    <div class="widget-icon">
+    <div class="icon" data-color="#ff5b5b" style="color: rgb(255, 91, 91);">
+    <span class="icon-copy ti-user faa-float animated faa-slow"></span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+    <div class="card-box height-100-p widget-style3">
+    <div class="d-flex flex-wrap">
+    <div class="widget-data">
+    <div class="weight-700 font-24 text-dark">57</div>
+    <div class="font-14 text-secondary weight-500">Total Fitur</div>
+    </div>
+    <div class="widget-icon">
+    <div class="icon">
+    <i class="icon-copy fa fa-database faa-pulse animated faa-slow" aria-hidden="true"></i>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+    <div class="card-box height-100-p widget-style3">
+    <div class="d-flex flex-wrap">
+    <div class="widget-data">
+    <div class="weight-700 font-24 text-dark" id="battery-level">83%</div>
+    <div class="font-14 text-secondary weight-500" id="charging-status">⚡⚡</div>
+    </div>
+    <div class="widget-icon">
+    <div class="icon" data-color="#09cc06" style="color: rgb(9, 204, 6);">
+    <i class="far fa-battery-full faa-burst animated faa-slow" aria-hidden="true"></i>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4 mb-20">
+    <a href="#" class="card-box d-block mx-auto pd-20 text-secondary">
+    <div class="card-body">
+    <strong>Thanks:</strong>
+    <div class="row">
+    <div class="col-auto">
+    <ul>
+    <li>• Allah SWT.</li>
+    <li>• Parents</li>
+    <li>• ferdiz-afk</li>
+    <li>• Frm dev</li>
+    <li>• orang tua</li>
+    <li>• ExpressJS, Pasport, EJS &amp; MongoDB</li>
+    <li>• The person who helped share this API</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="footer-wrap pd-20 mb-20 card-box"> DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+    </div>
+    </div>
+    </div>
+    <script> 
+         alert("Yahho selamat datang di website saya!"); 
+         alert("silahkan di pakai dengan baik 👍"); 
+              
+    </script> <script type="text/javascript">
+          let text_el = document.querySelector('div#browser_info')
+          let hSalam = document.querySelector('div#browser_sholat')
+          setInterval(() => {
+            var d = new Date();
+            const jam = d.getHours().toString().padStart(2, 0)
+            const menit = d.getMinutes().toString().padStart(2, 0)
+            const detik = d.getSeconds().toString().padStart(2, 0)
+            var ucapan = ''
+            if (jam >= '04:00' && jam <= '06:00') {
+              hSalam.innerHTML = 'Subuh!'
+            } else if (jam >= '06:00' && jam <= '10:00') {
+              hSalam.innerHTML = 'Selamat Pagi kak, jangan lupa awali hari dengan secangkir kopi !'
+            } else if (jam >= '10:00' && jam <= '14:00') {
+              hSalam.innerHTML = 'Selamat Siang kak!'
+            } else if (jam >= '14:00' && jam <= '17:00') {
+              hSalam.innerHTML = 'Selamat Sorre kak!'
+            } else if (jam >= '17:00' && jam <= '17:30') {
+              hSalam.innerHTML = 'Petang!'
+            } else if (jam >= '17:30' && jam <= '18:10') {
+              hSalam.innerHTML = 'Magrib!'
+            } else if (jam >= '18:10' && jam <= '04:00') {
+              hSalam.innerHTML = 'Selamat Malam kak!'
+            } else {
+              hSalam.innerHTML = 'Selamat Malam kak!'
+            }
+            text_el.innerHTML = jam + ":" + menit + ":" + detik
+          }, 250)
+        </script>
+    <script>
+          (function() {
+            let batterySupported = document.getElementById("battery-supported"),
+              batteryLevel = document.getElementById("battery-level"),
+              chargingStatus = document.getElementById("charging-status")
+            let success = function(battery) {
+              if (battery) {
+                function setStatus() {
+                  batteryLevel.innerHTML = Math.round(battery.level * 100) + "%";
+                  chargingStatus.innerHTML = (battery.charging) ? "⚡⚡" : "discharging";
+                  console.log("Set status " + batteryLevel.innerHTML + " " + chargingStatus.innerHTML);
+                }
+                // Set initial status
+                setStatus();
+                // Set events
+                battery.addEventListener("levelchange", setStatus, false);
+                battery.addEventListener("chargingchange", setStatus, false);
+              } else {
+                throw new Error('Battery API not supported on your device/computer');
+              }
+            };
+            let noGood = function(error) {
+              //  batterySupported.innerHTML = error.message;
+            };
+            navigator.getBattery() //returns a promise
+              .then(success)
+            //.catch(noGood);
+          })();
+        </script>
+    <script>
+          var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+          };
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
+    <script src="https://ferdiz-afk.github.io/deskapp/vendors/scripts/core.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/vendors/scripts/script.min.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/vendors/scripts/process.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/vendors/scripts/layout-settings.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/src/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://ferdiz-afk.github.io/deskapp/vendors/scripts/dashboard.js"></script>
+    
+    <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg></body>
